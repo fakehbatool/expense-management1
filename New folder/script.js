@@ -1,9 +1,8 @@
-// Array to store products added to the cart
+
 let cart = [];
 let totalAmount = 0;
 let discount = 0;
 
-// Function to add products to the cart
 function addProduct() {
     const productName = document.getElementById('product-name').value;
     const productPrice = parseFloat(document.getElementById('product-price').value);
@@ -17,23 +16,23 @@ function addProduct() {
             total: productPrice * productQuantity
         };
 
-        // Add the product to the cart array
+        
         cart.push(product);
         totalAmount += product.total;
 
-        // Clear input fields
+        
         document.getElementById('product-name').value = '';
         document.getElementById('product-price').value = '';
         document.getElementById('product-quantity').value = '';
 
-        // Update the cart display and total
+        
         displayCart();
     } else {
         alert("Please enter valid product details.");
     }
 }
 
-// Function to display the cart items and total
+
 function displayCart() {
     const cartItemsList = document.getElementById('cart-items');
     cartItemsList.innerHTML = '';
@@ -47,7 +46,7 @@ function displayCart() {
     document.getElementById('total-amount').textContent = totalAmount.toFixed(2);
 }
 
-// Function to apply discount to the total amount
+
 function applyDiscount() {
     discount = parseFloat(document.getElementById('discount').value);
     if (isNaN(discount) || discount < 0) {
@@ -57,7 +56,7 @@ function applyDiscount() {
     displayCart();
 }
 
-// Function to generate the receipt
+
 function generateReceipt() {
     let receiptDetails = `Receipt\n\n`;
     cart.forEach(item => {
@@ -73,13 +72,13 @@ function generateReceipt() {
     }
     receiptDetails += `Final Amount: $${finalAmount.toFixed(2)}`;
 
-    // Display the receipt
+    
     document.getElementById('receipt-details').textContent = receiptDetails;
     document.getElementById('receipt').style.display = 'block';
     document.getElementById('cart-items').style.display = 'none';
 }
 
-// Function to reset the system for a new transaction
+
 function resetSystem() {
     cart = [];
     totalAmount = 0;
